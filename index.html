@@ -54,8 +54,17 @@
     border-radius: 44px; color: #767676; font-weight: 500; text-decoration: none;
     transition: color .2s;
   }
-  .nav a:hover, .nav a[aria-current] { color: var(--ink); }
-  .nav a[aria-current] { background: #f2f2f2; }
+  .nav a:hover { color: var(--ink); }
+
+  /* 메뉴를 누르면 그 메뉴와 해당 카드를 강조한다. 아무것도 누르지 않았으면 홈 */
+  body:not(:has(.card:target)) .nav a[href="#intro"],
+  body:has(#intro:target) .nav a[href="#intro"],
+  body:has(#projects:target) .nav a[href="#projects"],
+  body:has(#awards:target) .nav a[href="#awards"],
+  body:has(#contact:target) .nav a[href="#contact"] { background: #f2f2f2; color: var(--ink); }
+  .card:target { box-shadow: 0 0 0 2px var(--ink); animation: spotlight 1.8s ease-out; }
+  @keyframes spotlight { from { box-shadow: 0 0 0 2px var(--ink), 0 0 0 14px rgb(0 0 0 / .12); } }
+  @media (prefers-reduced-motion: reduce) { .card:target { animation: none; } }
 
   .grid {
     display: grid; justify-content: center; gap: var(--gap);
@@ -253,14 +262,14 @@
 </head>
 <body>
   <nav class="nav" aria-label="바로가기">
-    <a href="#" aria-current="page">홈</a>
+    <a href="#intro">홈</a>
     <a href="#projects">프로젝트</a>
     <a href="#awards">수상</a>
     <a href="#contact">연락</a>
   </nav>
 
   <main class="grid">
-    <section class="card wide intro">
+    <section class="card wide intro" id="intro">
       <h1>안녕하세요, 개발자 <b>윤솔민</b>입니다.</h1>
       <p>요즘은 AI 에이전트에 흥미가 있고, 다양한 딥러닝 모델에도 관심이 많아요.</p>
       <h2>관심 분야</h2>
