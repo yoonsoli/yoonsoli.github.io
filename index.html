@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>윤솔민 포트폴리오</title>
-<meta name="description" content="윤솔민의 수상, 자격증, 학력과 연락처">
+<meta name="description" content="윤솔민의 프로젝트, 수상, 자격증, 학력과 연락처">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪪</text></svg>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
 <style>
@@ -16,6 +16,7 @@
     --quiet: #8a8a8a;
     --line: rgb(0 0 0 / .1);
     --blue: #0a84ff;
+    --coral: #d97757;
     --todo: #fff3b0;
     --cell: 328px;
     --gap: 16px;
@@ -75,12 +76,77 @@
   /* 소개 */
   .intro { padding: 32px; }
   .intro h1 {
-    margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line);
-    font-size: 31px; font-weight: 600; line-height: 1.25; letter-spacing: -.02em; color: var(--quiet);
+    margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line);
+    font-size: 28px; font-weight: 600; line-height: 1.25; letter-spacing: -.02em; color: var(--quiet);
   }
   .intro h1 b { font-weight: inherit; color: var(--ink); }
-  .intro p { font-size: 20px; line-height: 1.5; color: var(--text); }
-  .intro p + p { margin-top: 16px; }
+  .intro p { font-size: 17px; line-height: 1.55; color: var(--text); }
+  .intro p + p { margin-top: 6px; }
+
+  /* 프로젝트: 카드 전체가 GitHub 링크, 마우스를 올리면 앱 화면이 올라온다 */
+  .project { padding: 32px; text-decoration: none; }
+  .project h3 { margin-bottom: 8px; padding-right: 56px; font-size: 28px; font-weight: 600; line-height: 1.25; letter-spacing: -.02em; }
+  .project .desc { max-width: 34em; margin-bottom: 16px; font-size: 17px; line-height: 1.55; color: var(--text); }
+  .go {
+    position: absolute; top: 24px; right: 24px;
+    display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+    background: #fff; box-shadow: inset 0 0 0 1px var(--line);
+    transition: background .2s, color .2s;
+  }
+  .go svg { width: 16px; height: 16px; }
+  .project:hover .go { background: var(--ink); color: #fff; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { padding: 5px 12px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); font-size: 14px; font-weight: 500; }
+
+  .screen {
+    position: relative; flex-shrink: 0; height: 420px; margin: auto 0 -32px;
+    border-radius: 20px 20px 0 0; overflow: hidden;
+    background:
+      radial-gradient(90% 70% at 15% 10%, rgb(217 119 87 / .9), transparent 60%),
+      radial-gradient(80% 70% at 100% 100%, rgb(250 199 117 / .8), transparent 60%),
+      #2b241d;
+    transform: translateY(64px);
+    transition: transform .5s var(--bounce);
+  }
+  .project:hover .screen, .project:focus-visible .screen { transform: none; }
+  .menubar {
+    display: flex; justify-content: flex-end; align-items: center; gap: 14px;
+    height: 26px; padding: 0 14px; color: #fff; font-size: 12px; font-weight: 600;
+    background: rgb(255 255 255 / .28); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    font-variant-numeric: tabular-nums;
+  }
+  .menubar .app { display: flex; align-items: center; gap: 5px; padding: 1px 6px; border-radius: 5px; background: rgb(255 255 255 / .25); }
+  .mark { width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid var(--coral); border-right-color: transparent; }
+  .panel {
+    position: absolute; top: 34px; right: 20px; width: 320px; padding: 18px;
+    display: grid; gap: 16px; border-radius: 16px; color: #1d1d1f; font-size: 13px;
+    background: rgb(246 244 241 / .78);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6); backdrop-filter: blur(24px) saturate(1.6);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / .6), 0 20px 40px -12px rgb(0 0 0 / .45);
+    transform-origin: top right;
+  }
+  .panel-head { display: flex; align-items: center; gap: 8px; }
+  .panel-head .mark { width: 14px; height: 14px; }
+  .panel-head b { font-size: 14px; font-weight: 600; }
+  .gear { margin-left: auto; color: #6e6e73; }
+  .gauges { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .gauge {
+    display: grid; justify-items: center; gap: 8px; padding: 14px 10px; border-radius: 22px; text-align: center;
+    background: rgb(255 255 255 / .6); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .8);
+  }
+  .gauge > b { font-size: 12px; font-weight: 600; }
+  .ring { position: relative; display: grid; place-content: center; width: 88px; height: 88px; line-height: 1.15; }
+  .ring::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(var(--coral) calc(var(--p) * 1%), rgb(0 0 0 / .08) 0);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 9px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 9px));
+  }
+  .ring strong { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .gauge small { font-size: 10px; font-weight: 400; color: #6e6e73; }
+  .gauge span { font-size: 10px; font-weight: 500; line-height: 1.35; font-variant-numeric: tabular-nums; }
+  .note { overflow: hidden; font-size: 10px; color: #6e6e73; white-space: nowrap; text-overflow: ellipsis; }
+  .panel-foot { display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid rgb(0 0 0 / .08); font-size: 11px; color: #3a3a3c; }
 
   /* 수상: 기울어진 상장이 마우스를 올리면 바로 선다 */
   .rows { display: grid; gap: 14px; max-width: 58%; }
@@ -107,8 +173,8 @@
   .paper i { width: 48px; height: 48px; margin-top: auto; border-radius: 50%; background: #d9a441; box-shadow: inset 0 0 0 4px #f2c96b; }
   .awards:hover .paper, .awards:focus-within .paper { transform: none; }
 
-  /* 자격증: 지갑 속 카드처럼 겹쳐 있다가 펼쳐진다 */
-  .wallet { --open: 176px; position: relative; flex: 1; min-height: 540px; }
+  /* 자격증: 지갑 속 카드처럼 겹쳐 있다가 펼쳐진다. 3개 이상이 되면 section에 tall을 다시 붙이세요 */
+  .wallet { --open: 176px; position: relative; flex: 1; min-height: 172px; }
   .wallet:has(> :nth-child(4)) { --open: 128px; }
   .pass {
     --i: 0;
@@ -127,12 +193,6 @@
   .pass time { align-self: end; font-size: 13px; opacity: .75; font-variant-numeric: tabular-nums; }
   .pass .todo { color: #000; }
   .certs:hover .pass, .certs:focus-within .pass { transform: translateY(calc(var(--i) * -1 * var(--open))); }
-
-  /* 기술 스택 */
-  .stack h3 { margin: 4px 0 8px; font-size: 13px; font-weight: 500; color: var(--text); }
-  .stack h3 ~ h3 { margin-top: 16px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chips li { padding: 6px 12px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); font-size: 14px; font-weight: 500; }
 
   /* 학력과 교육 */
   .timeline { display: grid; gap: 16px; }
@@ -160,6 +220,7 @@
 
   /* 터치 화면에는 hover가 없으니 펼친 상태로 보여준다 */
   @media (hover: none) {
+    .project .screen { transform: none; }
     .certs .pass { transform: translateY(calc(var(--i) * -1 * var(--open))); }
     .contact .me { opacity: 1; transform: none; }
   }
@@ -171,8 +232,13 @@
     .grid { grid-template-columns: minmax(0, 400px); grid-auto-rows: auto; }
     .wide, .tall { grid-column: auto; grid-row: auto; }
     .card { min-height: var(--cell); }
-    .intro h1 { font-size: 26px; }
-    .intro p { font-size: 18px; }
+    .intro h1 { font-size: 24px; }
+    .intro p { font-size: 16px; }
+    .project { padding: 24px; }
+    .project h3 { font-size: 24px; }
+    .go { top: 16px; right: 16px; }
+    .screen { height: 360px; margin-bottom: -24px; }
+    .panel { right: 10px; scale: .82; }
     .rows { max-width: none; }
     .paper { display: none; }
     .timeline li { grid-template-columns: 1fr; gap: 2px; }
@@ -188,19 +254,42 @@
 <body>
   <nav class="nav" aria-label="바로가기">
     <a href="#" aria-current="page">홈</a>
+    <a href="#projects">프로젝트</a>
     <a href="#awards">수상</a>
-    <a href="#certs">자격증</a>
     <a href="#contact">연락</a>
   </nav>
 
   <main class="grid">
-    <section class="card wide tall intro">
+    <section class="card wide intro">
       <h1><b>윤솔민</b>은 <span class="todo">[예: 백엔드 개발을 공부하고 있어요.]</span></h1>
       <p class="todo">[나는 어떤 개발자인지 한 문장]</p>
-      <p class="todo">[무엇을 만들 때 즐거운지]</p>
-      <p class="todo">[요즘 파고드는 기술이나 주제]</p>
-      <p class="todo">[일할 때 중요하게 여기는 것]</p>
+      <p class="todo">[요즘 관심 있는 기술이나 주제]</p>
     </section>
+
+    <a class="card wide tall project" id="projects" href="https://github.com/yoonsoli/claude-usage-menubar" aria-label="Claude Usage Menubar, GitHub 저장소 열기">
+      <h2>프로젝트</h2>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h3>Claude Usage Menubar</h3>
+      <p class="desc">Claude 구독 사용량을 macOS 메뉴 막대와 위젯에서 바로 보여주는 앱이에요. 5시간 한도와 주간 한도, 초기화 시각을 한눈에 확인할 수 있어요.</p>
+      <ul class="tags">
+        <li>Swift</li>
+        <li>SwiftUI</li>
+        <li>WidgetKit</li>
+        <li>WKWebView</li>
+      </ul>
+      <div class="screen" aria-hidden="true">
+        <div class="menubar"><span class="app"><span class="mark"></span>42%</span><span>오후 2:02</span></div>
+        <div class="panel">
+          <div class="panel-head"><span class="mark"></span><b>Claude 사용량</b><span class="gear">⚙︎</span></div>
+          <div class="gauges">
+            <div class="gauge" style="--p: 42"><b>5시간</b><div class="ring"><strong>42%</strong><small>사용</small></div><span>9/14 오후 6:30 초기화<br><small>4시간 후</small></span></div>
+            <div class="gauge" style="--p: 68"><b>주간</b><div class="ring"><strong>68%</strong><small>사용</small></div><span>9/18 오전 9:00 초기화<br><small>4일 후</small></span></div>
+          </div>
+          <p class="note">⚠︎ 비공식 추정치 · 업데이트됨 · 14:02:11</p>
+          <div class="panel-foot"><span>↻ 새로고침</span><span>⏻ 종료</span></div>
+        </div>
+      </div>
+    </a>
 
     <section class="card wide awards" id="awards">
       <h2>수상</h2>
@@ -212,35 +301,19 @@
       <div class="paper" aria-hidden="true"><strong>상장</strong><span></span><span></span><span></span><i></i></div>
     </section>
 
-    <section class="card tall certs" id="certs" tabindex="0">
-      <h2>자격증</h2>
-      <ul class="wallet">
-        <li class="pass"><b>ADsP</b><span>데이터분석 준전문가, 한국데이터산업진흥원</span><time datetime="2026-08">2026.08</time></li>
-      </ul>
-    </section>
-
-    <section class="card stack">
-      <h2>기술 스택</h2>
-      <h3>자주 써요</h3>
-      <ul class="chips">
-        <li class="todo">[언어]</li>
-        <li class="todo">[프레임워크]</li>
-        <li class="todo">[DB]</li>
-      </ul>
-      <h3>써봤어요</h3>
-      <ul class="chips">
-        <li class="todo">[도구]</li>
-        <li class="todo">[도구]</li>
-        <li class="todo">[배포 환경]</li>
-      </ul>
-    </section>
-
     <section class="card wide edu">
       <h2>학력과 교육</h2>
       <ol class="timeline">
         <li><time>2022 – 현재</time><div><b>부경대학교</b><span>기술데이터전공</span></div></li>
         <li><time>2025 – 현재</time><div><b>Business Analytics Lab</b><span>이지환 교수 연구실</span></div></li>
       </ol>
+    </section>
+
+    <section class="card certs" id="certs" tabindex="0">
+      <h2>자격증</h2>
+      <ul class="wallet">
+        <li class="pass"><b>ADsP</b><span>데이터분석 준전문가, 한국데이터산업진흥원</span><time datetime="2026-08">2026.08</time></li>
+      </ul>
     </section>
 
     <section class="card contact" id="contact">
@@ -253,7 +326,7 @@
       </div>
     </section>
 
-    <!-- 프로젝트 카드는 여기 아래에 추가 -->
+    <!-- 프로젝트 카드를 더 넣으려면 위의 a.card.project 블록을 복사하세요 -->
   </main>
 </body>
 </html>
