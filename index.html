@@ -81,7 +81,7 @@
   }
   .intro h1 b { font-weight: inherit; color: var(--ink); }
   .intro p { font-size: 17px; line-height: 1.55; color: var(--text); }
-  .intro p + p { margin-top: 6px; }
+  .intro h2 { margin-top: auto; padding-top: 16px; }
 
   /* 프로젝트: 카드 전체가 GitHub 링크, 마우스를 올리면 앱 화면이 올라온다 */
   .project { padding: 32px; text-decoration: none; }
@@ -261,9 +261,13 @@
 
   <main class="grid">
     <section class="card wide intro">
-      <h1><b>윤솔민</b>은 <span class="todo">[예: 백엔드 개발을 공부하고 있어요.]</span></h1>
-      <p class="todo">[나는 어떤 개발자인지 한 문장]</p>
-      <p class="todo">[요즘 관심 있는 기술이나 주제]</p>
+      <h1>안녕하세요, 개발자 <b>윤솔민</b>입니다.</h1>
+      <p>요즘은 AI 에이전트에 흥미가 있고, 다양한 딥러닝 모델에도 관심이 많아요.</p>
+      <h2>관심 분야</h2>
+      <ul class="tags">
+        <li>AI Agent</li>
+        <li>딥러닝 모델</li>
+      </ul>
     </section>
 
     <a class="card wide tall project" id="projects" href="https://github.com/yoonsoli/claude-usage-menubar" aria-label="Claude Usage Menubar, GitHub 저장소 열기">
