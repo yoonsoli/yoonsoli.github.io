@@ -225,8 +225,12 @@ body:has(#contact:target) .nav a[href="#contact"],
 .pass time { align-self: end; font-size: 13px; opacity: .75; font-variant-numeric: tabular-nums; }
 .certs:hover .pass, .certs:focus-within .pass { transform: translateY(calc(var(--i) * -1 * var(--open))); }
 
-/* 학력과 교육: 넓은 카드에 두 칸으로 나눠 담는다 */
-.timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; }
+/* 학력과 교육: 넓은 카드에 두 칸으로 나눠 담고, 넘치면 카드 안에서 스크롤한다 */
+.timeline {
+  flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 12px 28px;
+  scrollbar-width: thin; scrollbar-color: rgb(0 0 0 / .25) transparent;
+}
 .timeline li { display: grid; justify-items: start; align-content: start; }
 .timeline div { display: grid; justify-items: start; }
 .timeline time { font-size: 13px; color: var(--quiet); font-variant-numeric: tabular-nums; }
